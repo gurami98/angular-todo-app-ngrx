@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "email": "chilindrishviligurami@gmail.com",
+      "password": "$2a$10$YYDObdNtQ1.j3JNHl6c1DeNjF7ivcinaJklPyXbHRlISl6o/INbaK",
+      "username": "chillin220",
+      "id": 1
+    },
+    {
+      "email": "test@mail.ru",
+      "password": "$2a$10$24ezcOUoHtBFc1pGG74lt.m7VdDKTUJTPtsGadbGPKZJJRZoWl1z6",
+      "username": "chillin220",
+      "id": 2
+    }
+  ]
+}
