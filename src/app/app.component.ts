@@ -8,7 +8,7 @@ import {IUser} from "./shared/models/user.interfae";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'angular-todo-ngrx';
