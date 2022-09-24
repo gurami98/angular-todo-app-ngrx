@@ -1,5 +1,8 @@
 <mat-toolbar color="primary">
   <div>Welcome: {{userName}}</div>
   <span class="spacer"></span>
+  <a mat-button routerLink="todo-list" routerLinkActive="active-route">Todo List</a>
+  <a mat-button routerLink="todo-add" routerLinkActive="active-route">Add Todo</a>
+  <span class="spacer"></span>
   <button class="general-action-btn" mat-raised-button color="warn" (click)="logout()">Logout</button>
 </mat-toolbar>
