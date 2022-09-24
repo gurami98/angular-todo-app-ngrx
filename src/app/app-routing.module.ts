@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {NotFoundComponent} from "./shared/components/not-found/not-found.component";
-import {TodoListComponent} from "./features/todo-list/todo-list.component";
 import {LoginComponent} from "./features/user/login/login.component";
 import {RegisterComponent} from "./features/user/register/register.component";
+import {LoginGuard} from "./core/guards/login.guard";
+import {LogoutGuard} from "./core/guards/logout.guard";
 
 const routes: Routes = [
   {
@@ -13,15 +14,18 @@ const routes: Routes = [
   },
   {
     path: 'login',
+    canActivate: [LogoutGuard],
     component: LoginComponent
   },
   {
     path: 'register',
+    canActivate: [LogoutGuard],
     component: RegisterComponent
   },
   {
     path: 'todo-list',
-    component: TodoListComponent
+    canActivate: [LoginGuard],
+    loadChildren: () => import('./features/todo-list/todo-list.module').then(m => m.TodoListModule)
   },
   {
     path: '**',
