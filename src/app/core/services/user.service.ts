@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {IUser} from "../../shared/models/user.interfae";
@@ -8,6 +8,7 @@ import {Router} from "@angular/router";
 import {Store} from "@ngrx/store";
 import {State} from "../../store/app.state";
 import {loginUserSuccess} from "../../features/user/store/user.actions";
+import Swal from 'sweetalert2'
 
 @Injectable({
   providedIn: 'root'
@@ -23,14 +24,20 @@ export class UserService {
   }
 
   loginUser(data: IUser): Observable<IUserResponse> {
-    return this.http.post<IUserResponse>(`${environment.apiURL}/login`, data).pipe(
+    return this.http.post<IUserResponse>(`${environment.apiURL}/logind`, data).pipe(
       tap(res => {
         localStorage.setItem('user', JSON.stringify(res.user))
         localStorage.setItem('token', res.accessToken)
         this.router.navigateByUrl('todo-list')
       }),
       catchError(err => {
-        alert(`Error while trying to log in! MESSAGE: ${err.error}`)
+        Swal.fire({
+          title: 'Error while trying to log in!',
+          text: err.error,
+          icon: 'error',
+          confirmButtonText: 'Okay',
+          confirmButtonColor: '#3f51b5'
+        }).then()
         throw new Error(err.error);
       })
     )
@@ -38,9 +45,25 @@ export class UserService {
 
   registerUser(data: IUser): Observable<IUserResponse> {
     return this.http.post<IUserResponse>(`${environment.apiURL}/register`, data).pipe(
-      tap(_ => alert('Registration Successful! Go to login')),
+      tap(_ => {
+        Swal.fire({
+            title: 'Registration Successful!',
+            text: 'You can log in now',
+            icon: 'success',
+            confirmButtonText: 'Okay',
+            confirmButtonColor: '#3f51b5'
+          }).then()
+        this.router.navigateByUrl('/');
+        }
+      ),
       catchError(err => {
-        alert(`Error while trying to register! MESSAGE: ${err.error}`)
+        Swal.fire({
+          title: 'Error while trying to register!',
+          text: err.error,
+          icon: 'error',
+          confirmButtonText: 'Okay',
+          confirmButtonColor: '#3f51b5'
+        }).then()
         throw new Error(err.error);
       })
     )
