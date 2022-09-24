@@ -1,4 +1,5 @@
-<div>
+<mat-toolbar color="primary">
   <div>Welcome: {{userName}}</div>
-  <button (click)="logout()">Logout</button>
-</div>
+  <span class="spacer"></span>
+  <button class="general-action-btn" mat-raised-button color="warn" (click)="logout()">Logout</button>
+</mat-toolbar>

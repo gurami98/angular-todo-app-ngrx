@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {State} from "./store/app.state";
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
@@ -8,7 +8,8 @@ import {IUser} from "./shared/models/user.interfae";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   title = 'angular-todo-ngrx';

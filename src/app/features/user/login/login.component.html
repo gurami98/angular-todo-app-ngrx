@@ -17,6 +17,8 @@
     </mat-form-field>
 
     <a routerLink="/register">Not Registered?</a>
-    <button class="login-btn" mat-raised-button color="primary" (click)="login()">Login</button>
+    <button class="general-action-btn" mat-raised-button color="primary" (click)="login()">Login</button>
   </form>
 </div>
+
+<mat-spinner class="general-spinner" *ngIf="isLoading | async"></mat-spinner>

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {IUser} from "../../shared/models/user.interfae";
-import {catchError, Observable, of, tap} from "rxjs";
+import {BehaviorSubject, catchError, finalize, Observable, of, tap} from "rxjs";
 import {IUserResponse} from "../../shared/models/user-response";
 import {Router} from "@angular/router";
 import {Store} from "@ngrx/store";
@@ -14,6 +14,7 @@ import Swal from 'sweetalert2'
   providedIn: 'root'
 })
 export class UserService {
+  loading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient, private router: Router, private store: Store<State>) {
     if (localStorage.getItem('token')) {
@@ -24,12 +25,14 @@ export class UserService {
   }
 
   loginUser(data: IUser): Observable<IUserResponse> {
-    return this.http.post<IUserResponse>(`${environment.apiURL}/logind`, data).pipe(
+    this.loading.next(true)
+    return this.http.post<IUserResponse>(`${environment.apiURL}/login`, data).pipe(
       tap(res => {
         localStorage.setItem('user', JSON.stringify(res.user))
         localStorage.setItem('token', res.accessToken)
         this.router.navigateByUrl('todo-list')
       }),
+      finalize(() => this.loading.next(false)),
       catchError(err => {
         Swal.fire({
           title: 'Error while trying to log in!',
@@ -44,6 +47,7 @@ export class UserService {
   }
 
   registerUser(data: IUser): Observable<IUserResponse> {
+    this.loading.next(true)
     return this.http.post<IUserResponse>(`${environment.apiURL}/register`, data).pipe(
       tap(_ => {
         Swal.fire({
@@ -56,6 +60,7 @@ export class UserService {
         this.router.navigateByUrl('/');
         }
       ),
+      finalize(() => this.loading.next(false)),
       catchError(err => {
         Swal.fire({
           title: 'Error while trying to register!',

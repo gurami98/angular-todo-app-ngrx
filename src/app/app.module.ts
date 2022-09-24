@@ -11,6 +11,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -24,8 +26,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FeatureModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({ name: 'Todo App With NgRx', maxAge: 25, logOnly: environment.production }),
+    StoreDevtoolsModule.instrument({name: 'Todo App With NgRx', maxAge: 25, logOnly: environment.production}),
     BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

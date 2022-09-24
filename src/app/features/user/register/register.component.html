@@ -19,12 +19,15 @@
 
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Password</mat-label>
-      <input type="text" [errorStateMatcher]="matcher" matInput placeholder="*******" formControlName="password">
+      <input type="password" [errorStateMatcher]="matcher" matInput placeholder="*******" formControlName="password">
       <mat-error *ngIf="registerForm.get('password')?.hasError('required')">This field can not be blank</mat-error>
       <mat-error *ngIf="registerForm.get('password')?.hasError('minlength')">Password length needs to be minimum 3</mat-error>
     </mat-form-field>
 
     <a routerLink="/login">Already Registered? </a>
-    <button class="login-btn" mat-raised-button color="primary" (click)="register()">Register</button>
+    <button class="general-action-btn" mat-raised-button color="primary" (click)="register()">Register</button>
   </form>
 </div>
+
+<mat-spinner class="general-spinner" *ngIf="isLoading | async"></mat-spinner>
+

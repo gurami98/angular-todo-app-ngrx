@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {State} from "../../../store/app.state";
 import {Store} from "@ngrx/store";
 import {logoutUser} from "../../../features/user/store/user.actions";
@@ -6,7 +6,8 @@ import {logoutUser} from "../../../features/user/store/user.actions";
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarComponent implements OnInit {
 

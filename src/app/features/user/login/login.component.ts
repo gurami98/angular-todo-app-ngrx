@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {UserService} from "../../../core/services/user.service";
@@ -6,14 +6,17 @@ import {Store} from "@ngrx/store";
 import {State} from "../../../store/app.state";
 import * as UserActions from '../store/user.actions'
 import {MyErrorStateMatcher} from "../../../core/utils/error-state-matcher";
+import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit {
 
+  loading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   loginForm: FormGroup;
   matcher = new MyErrorStateMatcher();
 
@@ -32,6 +35,10 @@ export class LoginComponent implements OnInit {
       return
     }
     this.store.dispatch(UserActions.loginUser({user: this.loginForm.value}));
+  }
+
+  get isLoading() {
+    return this.userService.loading;
   }
 
 }
