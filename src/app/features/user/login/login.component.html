@@ -1,10 +1,22 @@
-<div>
-  <form [formGroup]="loginForm">
-    <label for="email">Email:</label>
-    <input formControlName="email" type="email" id="email" placeholder="email">
-    <label for="password">Password:</label>
-    <input formControlName="password" type="password" id="password" placeholder="*******">
+<div class="container">
+  <h1 class="text-center">Sign In</h1>
+  <form [formGroup]="loginForm"
+        class="login-form d-flex p-2 flex-column w-50 mx-auto gap-3">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Email address</mat-label>
+      <input type="email" [errorStateMatcher]="matcher" matInput placeholder="name@example.com" formControlName="email">
+      <mat-error *ngIf="loginForm.get('email')?.hasError('required')">This field can not be blank</mat-error>
+      <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Type in correct email format - name@example.com</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input type="password" [errorStateMatcher]="matcher" matInput placeholder="*******" formControlName="password">
+      <mat-error *ngIf="loginForm.get('password')?.hasError('required')">This field can not be blank</mat-error>
+      <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">Password length needs to be minimum 3</mat-error>
+    </mat-form-field>
+
     <a routerLink="/register">Not Registered?</a>
-    <button (click)="login()">Login</button>
+    <button class="login-btn" mat-raised-button color="primary" (click)="login()">Login</button>
   </form>
 </div>

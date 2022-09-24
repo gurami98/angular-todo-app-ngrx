@@ -9,6 +9,9 @@ import {StoreModule} from "@ngrx/store";
 import {EffectsModule} from "@ngrx/effects";
 import {userReducer} from "./store/user.reducer";
 import {UserEffects} from "./store/user.effect";
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 
 
@@ -22,8 +25,11 @@ import {UserEffects} from "./store/user.effect";
     ReactiveFormsModule,
     HttpClientModule,
     RouterLinkWithHref,
+    MatButtonModule,
     StoreModule.forFeature('user', userReducer),
-    EffectsModule.forFeature([UserEffects])
+    EffectsModule.forFeature([UserEffects]),
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class UserModule { }

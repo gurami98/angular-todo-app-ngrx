@@ -2,21 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {UserService} from "../../../core/services/user.service";
+import {MyErrorStateMatcher} from "../../../core/utils/error-state-matcher";
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss', '../login/login.component.scss']
 })
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
+  matcher = new MyErrorStateMatcher();
 
   constructor(private fb: FormBuilder, private http: HttpClient, private userService: UserService) {
     this.registerForm = fb.group({
-      email: fb.control('', Validators.required),
-      username: fb.control('', Validators.required),
-      password: fb.control('', Validators.required),
+      email: fb.control('', [Validators.required, Validators.email]),
+      username: fb.control('', [Validators.required, Validators.minLength(3)]),
+      password: fb.control('', [Validators.required, Validators.minLength(3)]),
     })
   }
 
@@ -24,6 +26,9 @@ export class RegisterComponent implements OnInit {
   }
 
   register(): void{
+    if(this.registerForm.invalid){
+      return
+    }
     this.userService.registerUser(this.registerForm.value).subscribe()
   }
 
