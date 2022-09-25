@@ -11,10 +11,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
 }
 
-.general-spinner{
+.global-center{
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.general-spinner{
+  @extend .global-center;
   z-index: 9999;
 }
