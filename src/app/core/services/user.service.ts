@@ -3,7 +3,7 @@ import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {IUser} from "../../shared/models/user.interfae";
 import {BehaviorSubject, catchError, finalize, Observable, of, tap} from "rxjs";
-import {IUserResponse} from "../../shared/models/user-response";
+import {IUserResponse} from "../../shared/models/user-response.interface";
 import {Router} from "@angular/router";
 import {Store} from "@ngrx/store";
 import {State} from "../../store/app.state";

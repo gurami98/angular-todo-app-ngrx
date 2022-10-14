@@ -18,8 +18,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public get userName(): Observable<any> {
-    return this.store.select(getCurrentUsername);
+  public get userName(): Observable<string> {
+    return this.store.select(getCurrentUsername) as Observable<string>;
   }
 
   logout(){
