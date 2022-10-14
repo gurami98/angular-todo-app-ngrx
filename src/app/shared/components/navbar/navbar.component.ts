@@ -2,6 +2,8 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {State} from "../../../store/app.state";
 import {Store} from "@ngrx/store";
 import {logoutUser} from "../../../features/user/store/user.actions";
+import {getCurrentUsername} from "../../../features/user/store/user.selectors";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-navbar',
@@ -16,8 +18,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public get userName(): string {
-    return JSON.parse(<string>localStorage.getItem('user')).username;
+  public get userName(): Observable<any> {
+    return this.store.select(getCurrentUsername);
   }
 
   logout(){

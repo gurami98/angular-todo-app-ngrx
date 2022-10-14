@@ -7,3 +7,8 @@ export const getCurrentUser = createSelector(
   getProductFeatureState,
   state => state.currentUser
 );
+
+export const getCurrentUsername = createSelector(
+  getCurrentUser,
+  state => state?.username
+);
