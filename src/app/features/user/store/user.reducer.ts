@@ -1,6 +1,6 @@
-import {createReducer, on} from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 
-import {IUser} from "../../../shared/models/user.interfae";
+import { IUser } from '../../../shared/models/user.interfae';
 import * as UserActions from './user.actions';
 
 export interface UserState {
@@ -10,7 +10,7 @@ export interface UserState {
 
 const initialState: UserState = {
   currentUser: null,
-  error: ''
+  error: '',
 };
 
 export const userReducer = createReducer<UserState>(
@@ -19,27 +19,27 @@ export const userReducer = createReducer<UserState>(
     return {
       ...state,
       currentUser: action.user,
-      error: ''
+      error: '',
     };
   }),
   on(UserActions.loginUserFailure, (state, action): UserState => {
     return {
       ...state,
       currentUser: null,
-      error: action.error
+      error: action.error,
     };
   }),
   on(UserActions.logoutUserSuccess, (state): UserState => {
     return {
       ...state,
       currentUser: null,
-      error: ''
+      error: '',
     };
   }),
   on(UserActions.logoutUserFailure, (state, action): UserState => {
     return {
       ...state,
-      error: action.error
+      error: action.error,
     };
   })
 );

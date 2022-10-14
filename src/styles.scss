@@ -1,24 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
-.general-action-btn{
+.general-action-btn {
   transition: 0s opacity;
-  &:hover{
+  &:hover {
     opacity: 0.9;
-    transition-duration:0.5s;
+    transition-duration: 0.5s;
   }
 }
 
-.global-center{
+.global-center {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.general-spinner{
+.general-spinner {
   @extend .global-center;
   z-index: 9999;
 }

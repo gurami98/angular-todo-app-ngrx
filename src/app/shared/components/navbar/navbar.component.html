@@ -1,9 +1,19 @@
 <mat-toolbar color="primary">
-  <div>Welcome: {{userName | async}}</div>
+  <div>Welcome: {{ userName | async }}</div>
   <span class="spacer"></span>
-  <a mat-button routerLink="todo-list" routerLinkActive="active-route">Todo List</a>
-  <a mat-button routerLink="todo-add" routerLinkActive="active-route">Add Todo</a>
+  <a mat-button routerLink="todo-list" routerLinkActive="active-route"
+    >Todo List</a
+  >
+  <a mat-button routerLink="todo-add" routerLinkActive="active-route"
+    >Add Todo</a
+  >
   <span class="spacer"></span>
-  <p class="cart">CART ({{0}})</p>
-  <button class="general-action-btn" mat-raised-button color="warn" (click)="logout()">Logout</button>
+  <p class="cart">CART ({{ 0 }})</p>
+  <button
+    class="general-action-btn"
+    mat-raised-button
+    color="warn"
+    (click)="logout()">
+    Logout
+  </button>
 </mat-toolbar>

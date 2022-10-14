@@ -1,21 +1,24 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {HttpClient} from "@angular/common/http";
-import {UserService} from "../../../core/services/user.service";
-import {MyErrorStateMatcher} from "../../../core/utils/error-state-matcher";
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { UserService } from '../../../core/services/user.service';
+import { MyErrorStateMatcher } from '../../../core/utils/error-state-matcher';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss', '../login/login.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RegisterComponent implements OnInit {
-
+export class RegisterComponent {
   registerForm: FormGroup;
   matcher = new MyErrorStateMatcher();
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private userService: UserService) {
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private userService: UserService
+  ) {
     this.registerForm = fb.group({
       email: fb.control('', [Validators.required, Validators.email]),
       username: fb.control('', [Validators.required, Validators.minLength(3)]),
@@ -23,11 +26,8 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-  }
-
-  register(): void{
-    if(this.registerForm.invalid){
+  register(): void {
+    if (this.registerForm.invalid) {
       return;
     }
     this.userService.registerUser(this.registerForm.value).subscribe();
@@ -36,5 +36,4 @@ export class RegisterComponent implements OnInit {
   get isLoading() {
     return this.userService.loading;
   }
-
 }
