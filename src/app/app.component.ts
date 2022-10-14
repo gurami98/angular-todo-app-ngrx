@@ -2,7 +2,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { State } from './store/app.state';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { getCurrentUser } from './features/user/store/user.selectors';
+import {
+  getCurrentUser,
+  getIsLoading,
+} from './features/user/store/user.selectors';
 import { IUser } from './shared/models/user.interfae';
 
 @Component({
@@ -18,5 +21,9 @@ export class AppComponent {
 
   public get isUserLoggedIn(): Observable<IUser | null> {
     return this.store.select(getCurrentUser);
+  }
+
+  public get isLoading() {
+    return this.store.select(getIsLoading);
   }
 }

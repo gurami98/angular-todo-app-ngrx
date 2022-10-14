@@ -12,3 +12,8 @@ export const getCurrentUsername = createSelector(
   getCurrentUser,
   state => state?.username
 );
+
+export const getIsLoading = createSelector(
+  getProductFeatureState,
+  state => state.isLoading
+);

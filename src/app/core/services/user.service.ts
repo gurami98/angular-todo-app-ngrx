@@ -36,14 +36,12 @@ export class UserService {
   }
 
   loginUser(data: IUser): Observable<IUserResponse> {
-    this.loading.next(true);
     return this.http.post<IUserResponse>(REST_URL.LOGIN, data).pipe(
       tap((res: IUserResponse) => {
         localStorage.setItem('user', JSON.stringify(res.user));
         localStorage.setItem('token', res.accessToken);
         this.router.navigateByUrl('todo-list').then();
       }),
-      finalize(() => this.loading.next(false)),
       catchError(err => {
         Swal.fire({
           title: 'Error while trying to log in!',

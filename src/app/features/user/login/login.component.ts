@@ -6,7 +6,6 @@ import { Store } from '@ngrx/store';
 import { State } from '../../../store/app.state';
 import * as UserActions from '../store/user.actions';
 import { MyErrorStateMatcher } from '../../../core/utils/error-state-matcher';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +14,6 @@ import { BehaviorSubject } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
-  loading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   loginForm: FormGroup;
   matcher = new MyErrorStateMatcher();
 
@@ -36,9 +34,5 @@ export class LoginComponent {
       return;
     }
     this.store.dispatch(UserActions.loginUser({ user: this.loginForm.value }));
-  }
-
-  get isLoading() {
-    return this.userService.loading;
   }
 }
