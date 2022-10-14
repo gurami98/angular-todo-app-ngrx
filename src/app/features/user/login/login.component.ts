@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { UserService } from '../../../core/services/user.service';
+import { UserService } from '@core/services/user.service';
 import { Store } from '@ngrx/store';
-import { State } from '../../../store/app.state';
+import { State } from '@store/app.state';
 import * as UserActions from '../store/user.actions';
-import { MyErrorStateMatcher } from '../../../core/utils/error-state-matcher';
+import { MyErrorStateMatcher } from '@core/utils/error-state-matcher';
 
 @Component({
   selector: 'app-login',

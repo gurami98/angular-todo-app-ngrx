@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IUser } from '../../shared/models/user.interfae';
+import { IUser } from '@shared/models/user.interfae';
 import {
   BehaviorSubject,
   catchError,
@@ -9,13 +9,13 @@ import {
   of,
   tap,
 } from 'rxjs';
-import { IUserResponse } from '../../shared/models/user-response.interface';
+import { IUserResponse } from '@shared/models/user-response.interface';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { State } from '../../store/app.state';
-import { loginUserSuccess } from '../../features/user/store/user.actions';
+import { State } from '@store/app.state';
+import { loginUserSuccess } from '@features/user/store/user.actions';
 import Swal from 'sweetalert2';
-import { REST_URL } from '../constants';
+import { REST_URL } from '@core/constants';
 
 @Injectable({
   providedIn: 'root',

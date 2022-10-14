@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { FeatureModule } from './features/feature.module';
+import { FeatureModule } from '@features/feature.module';
 import { AppRoutingModule } from './app-routing.module';
-import { NotFoundComponent } from './shared/components/not-found/not-found.component';
-import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { NotFoundComponent } from '@shared/components/not-found/not-found.component';
+import { NavbarComponent } from '@shared/components/navbar/navbar.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
+import { environment } from '@environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';

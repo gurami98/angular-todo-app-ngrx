@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
-import { IUser } from '../../../shared/models/user.interfae';
-import { ACTION_TYPES } from '../../../core/constants';
+import { IUser } from '@shared/models/user.interfae';
+import { ACTION_TYPES } from '@core/constants';
 
 export const loginUser = createAction(
   ACTION_TYPES.LOGIN,

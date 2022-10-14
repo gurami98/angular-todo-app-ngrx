@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NotFoundComponent } from './shared/components/not-found/not-found.component';
-import { LoginComponent } from './features/user/login/login.component';
-import { RegisterComponent } from './features/user/register/register.component';
-import { LoginGuard } from './core/guards/login.guard';
-import { LogoutGuard } from './core/guards/logout.guard';
+import { NotFoundComponent } from '@shared/components/not-found/not-found.component';
+import { LoginComponent } from '@features/user/login/login.component';
+import { RegisterComponent } from '@features/user/register/register.component';
+import { LoginGuard } from '@core/guards/login.guard';
+import { LogoutGuard } from '@core/guards/logout.guard';
 
 const routes: Routes = [
   {
