@@ -1,30 +1,31 @@
 import {createAction, props} from "@ngrx/store";
 import {IUser} from "../../../shared/models/user.interfae";
+import {ACTION_TYPES} from "../../../core/constants";
 
 export const loginUser = createAction(
-  '[User] Login User',
+  ACTION_TYPES.LOGIN,
   props<{user: IUser}>()
 );
 
 export const loginUserSuccess = createAction(
-  '[User] Login User Success',
+  ACTION_TYPES.LOGIN_SUCCESS,
   props<{user: IUser}>()
 );
 
 export const loginUserFailure = createAction(
-  '[User] Login User Failure',
+  ACTION_TYPES.LOGIN_FAILURE,
   props<{error: string}>()
 );
 
 export const logoutUser = createAction(
-  '[User] Logout User'
+  ACTION_TYPES.LOGOUT,
 );
 
 export const logoutUserSuccess = createAction(
-  '[User] Logout User Success'
+  ACTION_TYPES.LOGOUT_SUCCESS,
 );
 
 export const logoutUserFailure = createAction(
-  '[User] Logout User Failure',
+  ACTION_TYPES.LOGOUT_FAILURE,
   props<{error: string}>()
 );

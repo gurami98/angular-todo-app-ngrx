@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {IUser} from "../../shared/models/user.interfae";
 import {BehaviorSubject, catchError, finalize, Observable, of, tap} from "rxjs";
@@ -9,6 +8,7 @@ import {Store} from "@ngrx/store";
 import {State} from "../../store/app.state";
 import {loginUserSuccess} from "../../features/user/store/user.actions";
 import Swal from 'sweetalert2'
+import {REST_URL} from "../constants";
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class UserService {
 
   loginUser(data: IUser): Observable<IUserResponse> {
     this.loading.next(true)
-    return this.http.post<IUserResponse>(`${environment.apiURL}/login`, data).pipe(
+    return this.http.post<IUserResponse>(REST_URL.LOGIN, data).pipe(
       tap(res => {
         localStorage.setItem('user', JSON.stringify(res.user))
         localStorage.setItem('token', res.accessToken)
@@ -48,7 +48,7 @@ export class UserService {
 
   registerUser(data: IUser): Observable<IUserResponse> {
     this.loading.next(true)
-    return this.http.post<IUserResponse>(`${environment.apiURL}/register`, data).pipe(
+    return this.http.post<IUserResponse>(REST_URL.REGISTER, data).pipe(
       tap(_ => {
         Swal.fire({
             title: 'Registration Successful!',
