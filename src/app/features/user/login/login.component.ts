@@ -4,7 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {UserService} from "../../../core/services/user.service";
 import {Store} from "@ngrx/store";
 import {State} from "../../../store/app.state";
-import * as UserActions from '../store/user.actions'
+import * as UserActions from '../store/user.actions';
 import {MyErrorStateMatcher} from "../../../core/utils/error-state-matcher";
 import {BehaviorSubject} from "rxjs";
 
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     this.loginForm = fb.group({
       email: fb.control('', [Validators.required, Validators.email]),
       password: fb.control('', [Validators.required, Validators.minLength(6)])
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
   login(): void{
     if(this.loginForm.invalid){
-      return
+      return;
     }
     this.store.dispatch(UserActions.loginUser({user: this.loginForm.value}));
   }

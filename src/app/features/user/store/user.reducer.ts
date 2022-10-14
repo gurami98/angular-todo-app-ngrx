@@ -1,7 +1,7 @@
 import {createReducer, on} from '@ngrx/store';
 
 import {IUser} from "../../../shared/models/user.interfae";
-import * as UserActions from './user.actions'
+import * as UserActions from './user.actions';
 
 export interface UserState {
   currentUser: IUser | null;

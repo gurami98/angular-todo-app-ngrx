@@ -3,7 +3,7 @@ import {environment} from "../../environments/environment";
 export const REST_URL = {
   LOGIN: `${environment.apiURL}/login`,
   REGISTER: `${environment.apiURL}/register`,
-}
+};
 
 export enum ACTION_TYPES {
   LOGIN = '[User] Login User',

@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
 import {Store} from "@ngrx/store";
 import {State} from "../../store/app.state";
 import {loginUserSuccess} from "../../features/user/store/user.actions";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import {REST_URL} from "../constants";
 
 @Injectable({
@@ -19,18 +19,18 @@ export class UserService {
   constructor(private http: HttpClient, private router: Router, private store: Store<State>) {
     if (localStorage.getItem('token')) {
       const user = JSON.parse(<string>localStorage.getItem('user'));
-      console.log(user)
-      this.store.dispatch(loginUserSuccess({user}))
+      console.log(user);
+      this.store.dispatch(loginUserSuccess({user}));
     }
   }
 
   loginUser(data: IUser): Observable<IUserResponse> {
-    this.loading.next(true)
+    this.loading.next(true);
     return this.http.post<IUserResponse>(REST_URL.LOGIN, data).pipe(
       tap(res => {
-        localStorage.setItem('user', JSON.stringify(res.user))
-        localStorage.setItem('token', res.accessToken)
-        this.router.navigateByUrl('todo-list')
+        localStorage.setItem('user', JSON.stringify(res.user));
+        localStorage.setItem('token', res.accessToken);
+        this.router.navigateByUrl('todo-list').then();
       }),
       finalize(() => this.loading.next(false)),
       catchError(err => {
@@ -40,14 +40,14 @@ export class UserService {
           icon: 'error',
           confirmButtonText: 'Okay',
           confirmButtonColor: '#3f51b5'
-        }).then()
+        }).then();
         throw new Error(err.error);
       })
-    )
+    );
   }
 
   registerUser(data: IUser): Observable<IUserResponse> {
-    this.loading.next(true)
+    this.loading.next(true);
     return this.http.post<IUserResponse>(REST_URL.REGISTER, data).pipe(
       tap(_ => {
         Swal.fire({
@@ -56,8 +56,8 @@ export class UserService {
             icon: 'success',
             confirmButtonText: 'Okay',
             confirmButtonColor: '#3f51b5'
-          }).then()
-        this.router.navigateByUrl('/');
+          }).then();
+        this.router.navigateByUrl('/').then();
         }
       ),
       finalize(() => this.loading.next(false)),
@@ -68,15 +68,15 @@ export class UserService {
           icon: 'error',
           confirmButtonText: 'Okay',
           confirmButtonColor: '#3f51b5'
-        }).then()
+        }).then();
         throw new Error(err.error);
       })
-    )
+    );
   }
 
   logoutUser(): Observable<boolean> {
     localStorage.clear();
-    this.router.navigateByUrl('login');
+    this.router.navigateByUrl('login').then();
     return of(true);
   }
 }

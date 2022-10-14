@@ -9,17 +9,17 @@ import {BehaviorSubject} from "rxjs";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NotFoundComponent implements OnInit, OnDestroy {
-  countdown: BehaviorSubject<number> = new BehaviorSubject<number>(5)
-  countdownNumber: number = 5
+  countdown: BehaviorSubject<number> = new BehaviorSubject<number>(5);
+  countdownNumber: number = 5;
 
   countdownInterval = setInterval(() => {
-    this.countdownNumber = this.countdownNumber - 1
-    this.countdown.next(this.countdownNumber)
-  }, 1000)
+    this.countdownNumber = this.countdownNumber - 1;
+    this.countdown.next(this.countdownNumber);
+  }, 1000);
 
   redirectTimer = setTimeout(() => {
-    this.router.navigateByUrl('/')
-  }, 5000)
+    this.router.navigateByUrl('/');
+  }, 5000);
 
   constructor(private router: Router) {}
 
@@ -27,8 +27,8 @@ export class NotFoundComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    clearInterval(this.countdownInterval)
-    clearTimeout(this.redirectTimer)
+    clearInterval(this.countdownInterval);
+    clearTimeout(this.redirectTimer);
   }
 
 }

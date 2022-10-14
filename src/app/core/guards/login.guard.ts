@@ -13,7 +13,7 @@ export class LoginGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     if (localStorage.getItem('token')) {
-      return true
+      return true;
     } else {
       this.router.navigateByUrl('/');
       return false;

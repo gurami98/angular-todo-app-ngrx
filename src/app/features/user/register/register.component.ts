@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
       email: fb.control('', [Validators.required, Validators.email]),
       username: fb.control('', [Validators.required, Validators.minLength(3)]),
       password: fb.control('', [Validators.required, Validators.minLength(6)]),
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -28,9 +28,9 @@ export class RegisterComponent implements OnInit {
 
   register(): void{
     if(this.registerForm.invalid){
-      return
+      return;
     }
-    this.userService.registerUser(this.registerForm.value).subscribe()
+    this.userService.registerUser(this.registerForm.value).subscribe();
   }
 
   get isLoading() {

@@ -13,7 +13,7 @@ export class LogoutGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     if (!localStorage.getItem('token')) {
-      return true
+      return true;
     } else {
       this.router.navigateByUrl('todo-list');
       return false;
