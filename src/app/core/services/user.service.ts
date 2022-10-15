@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IUser } from '@shared/models/user.interfae';
+import { IUser, IUserResponse } from '@shared/models';
 import {
   BehaviorSubject,
   catchError,
@@ -9,7 +9,6 @@ import {
   of,
   tap,
 } from 'rxjs';
-import { IUserResponse } from '@shared/models/user-response.interface';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { State } from '@store/app.state';

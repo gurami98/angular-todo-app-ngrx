@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { UserService } from '@core/services/user.service';
+import { UserService } from '@core/services';
 import { Store } from '@ngrx/store';
 import { State } from '@store/app.state';
 import * as UserActions from '../store/user.actions';
