@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { State } from '@store/app.state';
 import * as UserActions from '../store/user.actions';
 import { MyErrorStateMatcher } from '@core/utils/error-state-matcher';
+import { getIsLoading } from '@features/user/store/user.selectors';
 
 @Component({
   selector: 'app-login',
@@ -34,5 +35,9 @@ export class LoginComponent {
       return;
     }
     this.store.dispatch(UserActions.loginUser({ user: this.loginForm.value }));
+  }
+
+  public get isLoading() {
+    return this.store.select(getIsLoading);
   }
 }
