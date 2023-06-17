@@ -16,12 +16,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TodoListComponent } from '@features/todo-list/todo-list.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NotFoundComponent,
-    NavbarComponent,
-    TodoListComponent,
-  ],
+  declarations: [AppComponent, NotFoundComponent, NavbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -39,6 +34,7 @@ import { TodoListComponent } from '@features/todo-list/todo-list.component';
     MatToolbarModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    TodoListComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
