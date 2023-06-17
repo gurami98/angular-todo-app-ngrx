@@ -4,6 +4,7 @@ import { NotFoundComponent } from '@shared/components/not-found/not-found.compon
 import { LoginComponent } from '@features/user/login/login.component';
 import { RegisterComponent } from '@features/user/register/register.component';
 import { LoginGuard, LogoutGuard } from '@core/guards';
+import { TodoListComponent } from '@features/todo-list/todo-list.component';
 
 const routes: Routes = [
   {
@@ -25,10 +26,7 @@ const routes: Routes = [
     path: 'todo-list',
     canActivate: [LoginGuard],
     // TODO: properly manage routing for the application
-    loadChildren: () =>
-      import('./features/todo-list/todo-list.module').then(
-        m => m.TodoListModule
-      ),
+    component: TodoListComponent,
   },
   {
     path: '**',
