@@ -26,6 +26,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
       name: 'Todo App With NgRx',
       maxAge: 25,
       logOnly: environment.production,
+      trace: true,
+      traceLimit: 100,
     }),
     BrowserAnimationsModule,
     MatToolbarModule,
