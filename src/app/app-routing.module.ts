@@ -24,6 +24,7 @@ const routes: Routes = [
   {
     path: 'todo-list',
     canActivate: [LoginGuard],
+    // TODO: properly manage routing for the application
     loadChildren: () =>
       import('./features/todo-list/todo-list.module').then(
         m => m.TodoListModule
