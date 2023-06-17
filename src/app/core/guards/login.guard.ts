@@ -22,11 +22,10 @@ export class LoginGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (localStorage.getItem('token')) {
-      return true;
-    } else {
+    if (!localStorage.getItem('token')) {
       this.router.navigateByUrl('/');
       return false;
     }
+    return true;
   }
 }

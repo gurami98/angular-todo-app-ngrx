@@ -11,6 +11,12 @@
       "password": "$2a$10$24ezcOUoHtBFc1pGG74lt.m7VdDKTUJTPtsGadbGPKZJJRZoWl1z6",
       "username": "chillin220",
       "id": 2
+    },
+    {
+      "email": "1@1.com",
+      "password": "$2a$10$U3XQIokyvmcgIvP3BiGgpOaE5ObjX5BWdn2WlsPDbRCIb4JVsZmzO",
+      "username": "111",
+      "id": 3
     }
   ]
 }
